@@ -46,7 +46,7 @@
     <br />
     <br />
     <label for="result" style="font-weight: 500;">Result:</label>
-    <input type="number" name="result" id="result" :value="estado.result">
+    <input type="text" name="result" id="result" :value="estado.result">
   </div>
 
 </template>
