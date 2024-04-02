@@ -1,6 +1,7 @@
 # curso_ebac_exerc_27_calculadora-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Atividade para construir uma calculadora aritmética (dois números de entrada).
+O resultado deve ser automático, selecionando a operação por meio de <select>.
 
 ## Recommended IDE Setup
 
