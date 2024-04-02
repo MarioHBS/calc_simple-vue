@@ -1,26 +1,52 @@
 <script setup>
+  import { reactive } from 'vue';
+
+  const division = (x, y) => {
+    if (y == 0) return 'divisão por zero';
+    else return x / y;
+  }
+
+  const estado = reactive({
+    num_01: '0',
+    num_02: '0',
+    result: '',
+    filter: '56',
+    operations: {
+      sum: (x, y) => x + y,
+      sub: (x, y) => x - y,
+      mul: (x, y) => x * y,
+      div: (x, y) => division(x, y)
+    }
+  })
+
+  function calcular() {
+    const {num_01, num_02, filter} = estado;
+    estado.result = estado.operations[filter](parseFloat(num_01), parseFloat(num_02));
+  }
+
 </script>
 
 <template>
   <div class="container">
     <label for="nb1">N. 01: </label>
-    <input type="number" class="entrance" name="nb1" id="nb1"> <br />
+    <input v-model="estado.num_01" @input="calcular" type="number" class="entrance" name="nb1"> <br />
 
     <div class="operations">
-      <select name="oper" id="">
+      <select v-model="estado.filter" @change="calcular">
         <option value="sum">➕</option>
-        <option value="dif">➖</option>
+        <option value="sub">➖</option>
         <option value="mul">✖️</option>
         <option value="div">➗</option>
       </select>
     </div>
+    
 
     <label for="nb2">N. 02: </label>
-    <input type="number" class="entrance" name="nb2" id="nb2">
+    <input v-model="estado.num_02" @input="calcular" type="number" class="entrance" name="nb2">
     <br />
     <br />
-    <label for="result">Result:</label>
-    <input type="text" name="result" id="result">
+    <label for="result" style="font-weight: 500;">Result:</label>
+    <input type="number" name="result" id="result" :value="estado.result">
   </div>
 
 </template>
@@ -51,7 +77,7 @@
   }
 
   #result {
-    background-color: rgb(228, 121, 102);
+    background-color: rgb(234, 236, 137);
   }
 
 </style>
