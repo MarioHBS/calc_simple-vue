@@ -10,7 +10,7 @@
     num_01: '0',
     num_02: '0',
     result: '',
-    filter: '56',
+    filter: '',
     operations: {
       sum: (x, y) => x + y,
       sub: (x, y) => x - y,
@@ -39,12 +39,12 @@
         <option value="div">➗</option>
       </select>
     </div>
-    
 
     <label for="nb2">N. 02: </label>
     <input v-model="estado.num_02" @input="calcular" type="number" class="entrance" name="nb2">
     <br />
     <br />
+    <!-- RESULTADO: -->
     <label for="result" style="font-weight: 500;">Result:</label>
     <input type="text" name="result" id="result" :value="estado.result">
   </div>
